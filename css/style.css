@@ -316,7 +316,6 @@ button.dropbtn:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-
 .dropdown a:hover {
     background-color: #ddd;
 }
@@ -333,11 +332,9 @@ button.dropbtn:hover {
     background-color: #ddd;
 }
 
-
 .dropdown-item label {
     color: #000000;
 }
-
 
 div.dropdown-item > input:not(:checked) ~ label:hover,
 div.dropdown-item > input:not(:checked) ~ label:hover ~ label {

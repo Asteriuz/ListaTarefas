@@ -1,12 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter&display=swap"
+        rel="stylesheet" />
 </head>
+
 <body>
-    
+    <h1>Lista de Tarefas</h1>
+    <main>
+        <form id="form-task" action="" id="todo-input">
+            <h3>Nova Tarefa</h3>
+            <div class="input">
+                <input id="input-description" type="text" class="input-field" required />
+                <label class="input-label">Descrição</label>
+            </div>
+            <div class="input">
+                <input id="input-author" type="text" class="input-field" required />
+                <label class="input-label">Autor</label>
+            </div>
+            <div class="input">
+                <input id="input-dept" type="text" class="input-field" required />
+                <label class="input-label">Departamento</label>
+            </div>
+            <div class="action">
+                <button class="action-button">Adicionar</button>
+            </div>
+        </form>
+        <table id="table-task" class="styled-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Descrição</th>
+                    <th>Autor</th>
+                    <th>Departamento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="todo-list">
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>Comprar pão</td>
+                    <td>João</td>
+                    <td>Padaria</td>
+                    <td class="actions-td">
+                        <button class="edit-button"><img src="images/pencil.png" alt="editar" /></button>
+                        <button class="remove-button" onclick="removeTask()"><img src="images/remove.png" alt="remover" /></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>Comprar leite</td>
+                    <td>Maria</td>
+                    <td>Supermercado</td>
+                    <td class="actions-td">
+                        <button class="edit-button"><img src="images/pencil.png" alt="editar" /></button>
+                        <button class="remove-button"><img src="images/remove.png" alt="remover" /></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
 </body>
+
 </html>

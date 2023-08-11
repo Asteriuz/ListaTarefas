@@ -321,6 +321,7 @@ button.dropbtn:hover {
 }
 
 .dropdown-item {
+    cursor: pointer;
     padding: 16px;
     display: flex;
     justify-content: start;
@@ -332,16 +333,16 @@ button.dropbtn:hover {
     background-color: #ddd;
 }
 
-.dropdown-item label {
+.dropdown-item {
     color: #000000;
 }
 
-div.dropdown-item > input:not(:checked) ~ label:hover,
-div.dropdown-item > input:not(:checked) ~ label:hover ~ label {
+.dropdown-item > input:not(:checked) ~ label:hover,
+.dropdown-item > input:not(:checked) ~ label:hover ~ label {
     color: rgb(0, 0, 0);
 }
 
-div.dropdown-item > input:checked ~ label {
+.dropdown-item > input:checked ~ label {
     color: rgb(0, 0, 0);
 }
 

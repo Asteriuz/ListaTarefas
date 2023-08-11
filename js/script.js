@@ -180,8 +180,42 @@ window.onclick = function (event) {
 			}
 		}
 	}
-}
+};
 
-function toggleCol() {
-	
+function toggleCol(n) {
+	if (n == 1) {
+		let col = document.getElementsByClassName("description");
+		for (let i = 0; i < col.length; i++) {
+			col[i].classList.toggle("hide");
+		}
+		document.getElementById("description-th").classList.toggle("hide");
+	}
+	if (n == 2) {
+		let col = document.getElementsByClassName("author");
+		for (let i = 0; i < col.length; i++) {
+			col[i].classList.toggle("hide");
+		}
+		document.getElementById("author-th").classList.toggle("hide");
+	}
+	if (n == 3) {
+		let col = document.getElementsByClassName("dept");
+		for (let i = 0; i < col.length; i++) {
+			col[i].classList.toggle("hide");
+		}
+		document.getElementById("dept-th").classList.toggle("hide");
+	}
+	if (n == 4) {
+		let col = document.getElementsByClassName("important");
+		for (let i = 0; i < col.length; i++) {
+			col[i].classList.toggle("hide");
+		}
+		document.getElementById("important-th").classList.toggle("hide");
+	}
+	if (n == 5) {
+		let col = document.getElementsByClassName("actions-td");
+		for (let i = 0; i < col.length; i++) {
+			col[i].classList.toggle("hide");
+		}
+		document.getElementById("actions-th").classList.toggle("hide");
+	}
 }

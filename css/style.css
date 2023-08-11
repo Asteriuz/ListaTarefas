@@ -312,16 +312,22 @@ button.dropbtn:hover {
 }
 
 .dropdown-item {
-    margin: 4px;
+    padding: 16px;
     display: flex;
     justify-content: start;
     align-items: center;
     gap: 16px;
 }
 
+.dropdown-item:hover {
+    background-color: #ddd;
+}
+
+
 .dropdown-item label {
     color: #000000;
 }
+
 
 div.dropdown-item > input:not(:checked) ~ label:hover,
 div.dropdown-item > input:not(:checked) ~ label:hover ~ label {
@@ -334,4 +340,8 @@ div.dropdown-item > input:checked ~ label {
 
 .show {
     display: block;
+}
+
+.hide {
+    display: none;
 }

@@ -59,17 +59,23 @@
                     <th onclick="myFunction()" class="dropbtn"><button class="dropbtn"><i
                                 class="fa-solid fa-ellipsis fa-lg dropbtn"></i></button>
                         <div id="myDropdown" class="dropdown-content">
-                            <div class="dropdown-item"><input onclick="toggleCol(1)" type="checkbox" id="description-toggle"><label>Descrição</label></div>
-                            <div class="dropdown-item"><input onclick="toggleCol(2)" type="checkbox" id="author-toggle"><label>Author</label></div>
-                            <div class="dropdown-item"><input onclick="toggleCol(3)" type="checkbox" id="dept-toggle"><label>Departamento</label></div>
-                            <div class="dropdown-item"><input onclick="toggleCol(4)" type="checkbox" id="important-toggle"><label>Importância</label></div>
+                            <div class="dropdown-item"><input onclick="toggleCol(1)" checked="true" type="checkbox"
+                                    id="description-toggle"><label>Descrição</label></div>
+                            <div class="dropdown-item"><input onclick="toggleCol(2)" checked="true" type="checkbox"
+                                    id="author-toggle"><label>Autor</label></div>
+                            <div class="dropdown-item"><input onclick="toggleCol(3)" checked="true" type="checkbox"
+                                    id="dept-toggle"><label>Departamento</label></div>
+                            <div class="dropdown-item"><input onclick="toggleCol(4)" checked="true" type="checkbox"
+                                    id="important-toggle"><label>Importância</label></div>
+                            <div class="dropdown-item"><input onclick="toggleCol(5)" checked="true" type="checkbox"
+                                    id="important-toggle"><label>Ações</label></div>
                         </div>
                     </th>
                     <th id="description-th">Descrição</th>
                     <th id="author-th">Autor</th>
                     <th id="dept-th">Departamento</th>
                     <th id="important-th">Importância</th>
-                    <th>Ações</th>
+                    <th id="actions-th">Ações</th>
                 </tr>
             </thead>
             <tbody id="todo-list">

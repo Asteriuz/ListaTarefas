@@ -170,6 +170,16 @@ th:hover {
     background-color: #5f4acc;
 }
 
+.ascending::after {
+    content: "▲";
+    margin-left: 5px;
+}
+
+.descending::after {
+    content: "▼";
+    margin-left: 5px;
+}
+
 .styled-table th,
 .styled-table td {
     padding: 12px 15px;
@@ -222,6 +232,7 @@ td:first-child {
 }
 input:not(:checked) ~ label:hover,
 input:not(:checked) ~ label:hover ~ label {
+    cursor: pointer;
     color: #fd4;
 }
 input:checked ~ label {

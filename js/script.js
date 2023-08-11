@@ -8,14 +8,19 @@ const inputDept = document.querySelector("#input-dept");
 
 const tableBody = document.querySelector("#todo-list");
 
-// if (tableBody.rows.length == 0) {
-// 	document.querySelector("#table-task").style.display = "none";
-// }
+if (tableBody.rows.length == 0) {
+	document.querySelector("#table-task").style.display = "none";
+}
 
 id = 0;
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
+
+	th = document.querySelectorAll("th");
+	for (i = 0; i < th.length; i++) {
+		th[i].classList.remove("ascending");
+	}
 
 	if (tableBody.rows.length == 0) {
 		document.querySelector("#table-task").style.display = "block";
@@ -69,13 +74,13 @@ form.addEventListener('submit', (e) => {
 	const taskActions = document.createElement('td');
 	taskActions.classList.add('actions-td');
 
-	const taskEditBtn = document.createElement('button');
-	taskEditBtn.classList.add('edit-button');
-	const taskEditImg = document.createElement('img');
-	taskEditImg.setAttribute('src', 'images/pencil.png');
-	taskEditImg.setAttribute('alt', 'editar');
-	taskEditBtn.appendChild(taskEditImg);
-	taskActions.appendChild(taskEditBtn);
+	// const taskEditBtn = document.createElement('button');
+	// taskEditBtn.classList.add('edit-button');
+	// const taskEditImg = document.createElement('img');
+	// taskEditImg.setAttribute('src', 'images/pencil.png');
+	// taskEditImg.setAttribute('alt', 'editar');
+	// taskEditBtn.appendChild(taskEditImg);
+	// taskActions.appendChild(taskEditBtn);
 
 	const taskDelBtn = document.createElement('button');
 	taskDelBtn.classList.add('remove-button');
@@ -97,15 +102,20 @@ form.addEventListener('submit', (e) => {
 			document.querySelector("#table-task").style.display = "none";
 		}
 	});
-
-	// form.reset();
+	form.reset();
 });
 
 function sortTable(n) {
-	var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+	let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 	table = document.getElementById("table-task");
 	switching = true;
 	dir = "asc";
+	th = document.querySelectorAll("th");
+	for (i = 0; i < th.length; i++) {
+		th[i].classList.remove("ascending");
+		th[i].classList.remove("descending");
+	}
+	th[n].classList.add("ascending");
 	while (switching) {
 		switching = false;
 		rows = table.rows;
@@ -132,6 +142,8 @@ function sortTable(n) {
 		} else {
 			if (switchcount == 0 && dir == "asc") {
 				dir = "desc";
+				th[n].classList.remove("ascending");
+				th[n].classList.add("descending");
 				switching = true;
 			}
 		}

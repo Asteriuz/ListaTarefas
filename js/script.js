@@ -8,11 +8,23 @@ const inputDept = document.querySelector("#input-dept");
 
 const tableBody = document.querySelector("#todo-list");
 
+// if (tableBody.rows.length == 0) {
+// 	document.querySelector("#table-task").style.display = "none";
+// }
+
 id = 0;
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
 
+	if (tableBody.rows.length == 0) {
+		document.querySelector("#table-task").style.display = "block";
+	}
+
+	if (document.querySelector('input[name="rate"]:checked') == null) {
+		alert("Por favor, selecione a importância da tarefa.");
+		return false;
+	};
 
 	const task = {
 		"id": id++,
@@ -22,23 +34,22 @@ form.addEventListener('submit', (e) => {
 		"important": document.querySelector('input[name="rate"]:checked').value
 	};
 
-	const task_el = document.createElement('tr');
-	task_el.classList.add('task');
+	const taskEl = document.createElement('tr');
+	taskEl.classList.add('task');
 
-	const task_checkbox_el = document.createElement('td');
-	const task_checkbox_input_el = document.createElement('input');
-	task_checkbox_input_el.setAttribute('type', 'checkbox');
-	task_checkbox_el.appendChild(task_checkbox_input_el);
-	task_el.appendChild(task_checkbox_el);
+	const taskCheckbox = document.createElement('td');
+	const taskCheckboxInput = document.createElement('input');
+	taskCheckboxInput.setAttribute('type', 'checkbox');
+	taskCheckbox.appendChild(taskCheckboxInput);
+	taskEl.appendChild(taskCheckbox);
 
-	task_checkbox_input_el.addEventListener('change', function () {
+	taskCheckboxInput.addEventListener('change', function () {
 		if (this.checked) {
 			// 
 		} else {
 			console.log("Checkbox is not checked..");
 		}
 	});
-
 
 	for (const key in task) {
 		if (key === 'id') {
@@ -52,37 +63,125 @@ form.addEventListener('submit', (e) => {
 		else {
 			task_content_el.innerText = task[key];
 		}
-		task_el.appendChild(task_content_el);
+		taskEl.appendChild(task_content_el);
 	}
 
+	const taskActions = document.createElement('td');
+	taskActions.classList.add('actions-td');
 
-	const task_actions_el = document.createElement('td');
-	task_actions_el.classList.add('actions-td');
+	const taskEditBtn = document.createElement('button');
+	taskEditBtn.classList.add('edit-button');
+	const taskEditImg = document.createElement('img');
+	taskEditImg.setAttribute('src', 'images/pencil.png');
+	taskEditImg.setAttribute('alt', 'editar');
+	taskEditBtn.appendChild(taskEditImg);
+	taskActions.appendChild(taskEditBtn);
 
-	const task_edit_el = document.createElement('button');
-	task_edit_el.classList.add('edit-button');
-	const task_edit_img_el = document.createElement('img');
-	task_edit_img_el.setAttribute('src', 'images/pencil.png');
-	task_edit_img_el.setAttribute('alt', 'editar');
-	task_edit_el.appendChild(task_edit_img_el);
-	task_actions_el.appendChild(task_edit_el);
+	const taskDelBtn = document.createElement('button');
+	taskDelBtn.classList.add('remove-button');
+	const taskDelImg = document.createElement('img');
+	taskDelImg.setAttribute('src', 'images/remove.png');
+	taskDelImg.setAttribute('alt', 'remover');
+	taskDelBtn.appendChild(taskDelImg);
+	taskActions.appendChild(taskDelBtn);
 
-	const task_delete_el = document.createElement('button');
-	task_delete_el.classList.add('remove-button');
-	const task_delete_img_el = document.createElement('img');
-	task_delete_img_el.setAttribute('src', 'images/remove.png');
-	task_delete_img_el.setAttribute('alt', 'remover');
-	task_delete_el.appendChild(task_delete_img_el);
-	task_actions_el.appendChild(task_delete_el);
+	taskEl.appendChild(taskActions);
 
-	task_el.appendChild(task_actions_el);
+	tableBody.appendChild(taskEl);
 
-	tableBody.appendChild(task_el);
-
-	task_delete_el.addEventListener('click', (e) => {
+	taskDelBtn.addEventListener('click', (e) => {
 		e.preventDefault();
-		task_el.remove();
+		taskEl.remove();
+
+		if (tableBody.rows.length == 0) {
+			document.querySelector("#table-task").style.display = "none";
+		}
 	});
 
 	// form.reset();
 });
+
+function sortTable(n) {
+	var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+	table = document.getElementById("table-task");
+	switching = true;
+	dir = "asc";
+	while (switching) {
+		switching = false;
+		rows = table.rows;
+		for (i = 1; i < (rows.length - 1); i++) {
+			shouldSwitch = false;
+			x = rows[i].getElementsByTagName("TD")[n];
+			y = rows[i + 1].getElementsByTagName("TD")[n];
+			if (dir == "asc") {
+				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+					shouldSwitch = true;
+					break;
+				}
+			} else if (dir == "desc") {
+				if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+					shouldSwitch = true;
+					break;
+				}
+			}
+		}
+		if (shouldSwitch) {
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+			switchcount++;
+		} else {
+			if (switchcount == 0 && dir == "asc") {
+				dir = "desc";
+				switching = true;
+			}
+		}
+	}
+}
+
+descriptionTh = document.querySelector("#description-th");
+authorTh = document.querySelector("#author-th");
+deptTh = document.querySelector("#dept-th");
+importantTh = document.querySelector("#important-th");
+
+descriptionTh.addEventListener('click', (e) => {
+	e.preventDefault();
+	sortTable(1);
+});
+
+authorTh.addEventListener('click', (e) => {
+	e.preventDefault();
+	sortTable(2);
+});
+
+deptTh.addEventListener('click', (e) => {
+	e.preventDefault();
+	sortTable(3);
+});
+
+importantTh.addEventListener('click', (e) => {
+	e.preventDefault();
+	sortTable(4);
+});
+
+function myFunction() {
+	document.getElementById("myDropdown").classList.toggle("show");
+}
+
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+	if (!event.target.matches('.dropbtn')) {
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+			var openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			}
+		}
+	}
+}
+
+function toggleCol() {
+	
+}

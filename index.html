@@ -12,14 +12,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <h1>Lista de Tarefas</h1>
     <main>
         <form id="form-task" action="" id="todo-input">
-            <h3>Nova Tarefa</h3>
+            <h2>Nova Tarefa</h2>
             <div class="input">
                 <input id="input-description" type="text" class="input-field" required />
                 <label class="input-label">Descrição</label>
@@ -54,15 +56,43 @@
         <table id="table-task" class="styled-table">
             <thead>
                 <tr>
-                    <th></th>
-                    <th>Descrição</th>
-                    <th>Autor</th>
-                    <th>Departamento</th>
-                    <th>Importância</th>
+                    <th onclick="myFunction()" class="dropbtn"><button class="dropbtn"><i
+                                class="fa-solid fa-ellipsis fa-lg dropbtn"></i></button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <div class="dropdown-item"><input onclick="toggleCol(1)" type="checkbox" id="description-toggle"><label>Descrição</label></div>
+                            <div class="dropdown-item"><input onclick="toggleCol(2)" type="checkbox" id="author-toggle"><label>Author</label></div>
+                            <div class="dropdown-item"><input onclick="toggleCol(3)" type="checkbox" id="dept-toggle"><label>Departamento</label></div>
+                            <div class="dropdown-item"><input onclick="toggleCol(4)" type="checkbox" id="important-toggle"><label>Importância</label></div>
+                        </div>
+                    </th>
+                    <th id="description-th">Descrição</th>
+                    <th id="author-th">Autor</th>
+                    <th id="dept-th">Departamento</th>
+                    <th id="important-th">Importância</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="todo-list">
+                <tr class="task">
+                    <td><input type="checkbox"></td>
+                    <td class="description" onclick="sortTable(0)">Acabar o CP</td>
+                    <td class="author">Asteriuz</td>
+                    <td class="dept">Fiap</td>
+                    <td class="important">5⭐</td>
+                    <td class="actions-td"><button class="edit-button"><img src="images/pencil.png"
+                                alt="editar"></button><button class="remove-button"><img src="images/remove.png"
+                                alt="remover"></button></td>
+                </tr>
+                <tr class="task">
+                    <td><input type="checkbox"></td>
+                    <td class="description">Testar a Tabela</td>
+                    <td class="author">Augusto</td>
+                    <td class="dept">Programação</td>
+                    <td class="important">3⭐</td>
+                    <td class="actions-td"><button class="edit-button"><img src="images/pencil.png"
+                                alt="editar"></button><button class="remove-button"><img src="images/remove.png"
+                                alt="remover"></button></td>
+                </tr>
             </tbody>
         </table>
     </main>

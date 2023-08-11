@@ -12,7 +12,14 @@ if (tableBody.rows.length == 0) {
 	document.querySelector("#table-task").style.display = "none";
 }
 
-id = 0;
+let id = 0;
+
+let tableCols = {
+	"description": true,
+	"author": true,
+	"dept": true,
+	"important": true
+};
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
@@ -60,15 +67,19 @@ form.addEventListener('submit', (e) => {
 		if (key === 'id') {
 			continue;
 		}
-		const task_content_el = document.createElement('td');
-		task_content_el.classList.add(key);
+		const taskContentEl = document.createElement('td');
+		taskContentEl.classList.add(key);
+		if (!tableCols[key]) {
+			taskContentEl.classList.add("hide");
+		}
+
 		if (key === 'important') {
-			task_content_el.innerText = task[key] + '⭐';
+			taskContentEl.innerText = task[key] + '⭐';
 		}
 		else {
-			task_content_el.innerText = task[key];
+			taskContentEl.innerText = task[key];
 		}
-		taskEl.appendChild(task_content_el);
+		taskEl.appendChild(taskContentEl);
 	}
 
 	const taskActions = document.createElement('td');
@@ -201,6 +212,7 @@ function toggleCol(n) {
 			col[i].classList.toggle("hide");
 		}
 		document.getElementById("description-th").classList.toggle("hide");
+		tableCols["description"] = !tableCols["description"];
 	}
 	if (n == 2) {
 		let col = document.getElementsByClassName("author");
@@ -208,6 +220,7 @@ function toggleCol(n) {
 			col[i].classList.toggle("hide");
 		}
 		document.getElementById("author-th").classList.toggle("hide");
+		tableCols["author"] = !tableCols["author"];
 	}
 	if (n == 3) {
 		let col = document.getElementsByClassName("dept");
@@ -215,6 +228,7 @@ function toggleCol(n) {
 			col[i].classList.toggle("hide");
 		}
 		document.getElementById("dept-th").classList.toggle("hide");
+		tableCols["dept"] = !tableCols["dept"];
 	}
 	if (n == 4) {
 		let col = document.getElementsByClassName("important");
@@ -222,6 +236,7 @@ function toggleCol(n) {
 			col[i].classList.toggle("hide");
 		}
 		document.getElementById("important-th").classList.toggle("hide");
+		tableCols["important"] = !tableCols["important"];
 	}
 	if (n == 5) {
 		let col = document.getElementsByClassName("actions-td");
@@ -229,5 +244,6 @@ function toggleCol(n) {
 			col[i].classList.toggle("hide");
 		}
 		document.getElementById("actions-th").classList.toggle("hide");
+		tableCols["actions"] = !tableCols["actions"];
 	}
 }

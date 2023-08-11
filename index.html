@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter&display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
 <body>
@@ -31,6 +32,21 @@
                 <input id="input-dept" type="text" class="input-field" required />
                 <label class="input-label">Departamento</label>
             </div>
+            <div class="container">
+                <label id="important-label">Importância</label>
+                <div class="star-widget">
+                    <input type="radio" value="5" name="rate" id="rate-5">
+                    <label for="rate-5" class="fas fa-star"></label>
+                    <input type="radio" value="4" name="rate" id="rate-4">
+                    <label for="rate-4" class="fas fa-star"></label>
+                    <input type="radio" value="3" name="rate" id="rate-3">
+                    <label for="rate-3" class="fas fa-star"></label>
+                    <input type="radio" value="2" name="rate" id="rate-2">
+                    <label for="rate-2" class="fas fa-star"></label>
+                    <input type="radio" value="1" name="rate" id="rate-1">
+                    <label for="rate-1" class="fas fa-star"></label>
+                </div>
+            </div>
             <div class="action">
                 <button class="action-button">Adicionar</button>
             </div>
@@ -42,30 +58,11 @@
                     <th>Descrição</th>
                     <th>Autor</th>
                     <th>Departamento</th>
+                    <th>Importância</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="todo-list">
-                <tr>
-                    <td><input type="checkbox" /></td>
-                    <td>Comprar pão</td>
-                    <td>João</td>
-                    <td>Padaria</td>
-                    <td class="actions-td">
-                        <button class="edit-button"><img src="images/pencil.png" alt="editar" /></button>
-                        <button class="remove-button" onclick="removeTask()"><img src="images/remove.png" alt="remover" /></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" /></td>
-                    <td>Comprar leite</td>
-                    <td>Maria</td>
-                    <td>Supermercado</td>
-                    <td class="actions-td">
-                        <button class="edit-button"><img src="images/pencil.png" alt="editar" /></button>
-                        <button class="remove-button"><img src="images/remove.png" alt="remover" /></button>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </main>

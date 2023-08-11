@@ -1,13 +1,5 @@
 var checkbox = document.querySelector("input[type=checkbox]");
 
-checkbox.addEventListener('change', function () {
-	if (this.checked) {
-		// 
-	} else {
-		console.log("Checkbox is not checked..");
-	}
-});
-
 
 const form = document.querySelector("#form-task");
 const inputDescription = document.querySelector("#input-description");
@@ -21,11 +13,13 @@ id = 0;
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
 
+
 	const task = {
 		"id": id++,
 		"description": inputDescription.value,
 		"author": inputAuthor.value,
-		"dept": inputDept.value
+		"dept": inputDept.value,
+		"important": document.querySelector('input[name="rate"]:checked').value
 	};
 
 	const task_el = document.createElement('tr');
@@ -37,13 +31,27 @@ form.addEventListener('submit', (e) => {
 	task_checkbox_el.appendChild(task_checkbox_input_el);
 	task_el.appendChild(task_checkbox_el);
 
+	task_checkbox_input_el.addEventListener('change', function () {
+		if (this.checked) {
+			// 
+		} else {
+			console.log("Checkbox is not checked..");
+		}
+	});
+
+
 	for (const key in task) {
 		if (key === 'id') {
 			continue;
 		}
 		const task_content_el = document.createElement('td');
 		task_content_el.classList.add(key);
-		task_content_el.innerText = task[key];
+		if (key === 'important') {
+			task_content_el.innerText = task[key] + '⭐';
+		}
+		else {
+			task_content_el.innerText = task[key];
+		}
 		task_el.appendChild(task_content_el);
 	}
 
@@ -75,4 +83,6 @@ form.addEventListener('submit', (e) => {
 		e.preventDefault();
 		task_el.remove();
 	});
+
+	// form.reset();
 });

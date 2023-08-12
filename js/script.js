@@ -18,7 +18,8 @@ let tableCols = {
 	"description": true,
 	"author": true,
 	"dept": true,
-	"important": true
+	"important": true,
+	"actions": true
 };
 
 form.addEventListener('submit', (e) => {
@@ -84,6 +85,10 @@ form.addEventListener('submit', (e) => {
 
 	const taskActions = document.createElement('td');
 	taskActions.classList.add('actions-td');
+
+	if (!tableCols['actions']) {
+		taskActions.classList.add("hide");
+	}
 
 	// const taskEditBtn = document.createElement('button');
 	// taskEditBtn.classList.add('edit-button');
